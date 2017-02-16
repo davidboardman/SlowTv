@@ -82,19 +82,19 @@ body, html{
 
         function reLoad(){
 
-            symbolList = ['AXAS', 'XOM', 'XOM', 'BP', 'TOT', 'SU', 'IMO', 'SNP','CVX','DWCAEG','PWND','EGPW','GUR'];
+            symbolList = ['AXAS', 'XOM', 'XOM', 'BP', 'TOT', 'SU', 'IMO', 'SNP','CVX','PWND','GUR','KWT','TAN','FSLR','SPWR','SUNE','AEP','AWK','ED'];
             var symbolSelect = Math.floor(Math.random()*symbolList.length);
             symbolSelect=symbolList[symbolSelect];       
 
 
             $.getJSON("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20%3D%20'"+symbolSelect+"'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=", function(data) {
-                $("#result").html(symbolSelect+" | $"+ data.query.results.quote.LastTradePriceOnly);
+                $("#result").html(symbolSelect+" $"+ data.query.results.quote.LastTradePriceOnly);
                 $("#result").hide().fadeIn(500);
                 $("#time").html(""+ data.query.results.quote.LastTradeTime);
                 $("#change").html(""+ data.query.results.quote.Change);
                 $("#percent").html(""+ data.query.results.quote.ChangeinPercent);
             });
-        setTimeout(reLoad,6000);
+        setTimeout(reLoad,3000);
         };
 
     });

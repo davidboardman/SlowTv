@@ -22,17 +22,14 @@ $("document").ready(function () {
 	var africa=["ag", "ao", "bc", "bn", "by", "cd", "cf", "cg", "cm", "cn", "ct", "cv", "dj", "eg", "ek", "er", "et", "ga", "gb", "gh", "gv", "iv", "ke", "li", "lt", "ly", "ma", "mi", "ml", "mo", "mp", "mr", "mz", "ng", "ni", "od", "pu", "rw", "se", "sf", "sg", "sh", "sl", "so", "su", "to", "tp", "ts", "tz", "ug", "uv", "wa", "wi", "wz", "za", "zi"];
 
 	var country=africa[Math.floor(Math.random() * africa.length)];
-	console.log(country);
 
 	$.getJSON("africa/"+country+".json", function(data) {
-		console.log('CIAO '+data);
-		/*
-	    $("#result").html("$"+ data.query.results.quote.LastTradePriceOnly);
-	    $("#result").hide().fadeIn(500);
-	    $("#time").html(""+ data.query.results.quote.LastTradeTime);
-	    $("#change").html(""+ data.query.results.quote.Change);
-	    $("#percent").html(""+ data.query.results.quote.ChangeinPercent);
-	    */
+	    $("#result").html("$"+ data.Introduction.Background);
+	    //$("#result").hide().fadeIn(500);
+	    //$("#time").html(""+ data.query.results.quote.LastTradeTime);
+	    //$("#change").html(""+ data.query.results.quote.Change);
+	    //$("#percent").html(""+ data.query.results.quote.ChangeinPercent);
+
 	});
 
 });

@@ -1,0 +1,11 @@
+{
+    "name": "heroku/slow-tv",
+    "description": "hola",
+    "authors": [
+        {
+            "name": "David Boardman",
+            "email": "dboardman@ideo.com"
+        }
+    ],
+    "require": {}
+}

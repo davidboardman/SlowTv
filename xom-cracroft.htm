@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Slow TV + Fast Data (Cracroft Point &amp; XOM)</title>
+  
+  
+<style>
+body, html{
+ height: 100%; 
+  background-color: #000; 
+  margin: 0;
+  padding: 0;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#stock {
+  position: absolute;
+  display: block;
+  z-index: 100;
+  left: 10%; right: 10%; top: 10%; bottom: 10%;
+  color: #fafafa;
+  font-family:"Helvetica",sans-serif;
+  text-align: center;
+  font-size: 150px;
+  font-weight:800;
+  letter-spacing: -4px;
+  word-break: break-word;
+  white-space: normal;
+}
+
+#etc{
+  display: block;
+}
+
+#time, #change, #percent{
+  display: inline-block;
+  font-size: 24px;
+  font-weight: normal;
+  color: #fff;
+  letter-spacing: 0px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="video-container">
+  <iframe src="https://www.youtube.com/embed/wJUwiWwKUNc?rel=0&amp;controls=0&amp;showinfo=0&autoplay=1" frameborder="0" allowfullscreen class="video"></iframe>
+  <div id="stock">
+    <div id="etc">
+      <div id='result'></div>
+      <div id='time'></div>
+      <div id='change'></div>
+      <div id='percent'></div> 
+    </div>
+  </div>
+
+
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script>
+
+    $("document").ready(function () {
+
+        //Calling function
+        reLoad();
+
+        function reLoad(){
+            $.getJSON("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20%3D%20'XOM'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=", function(data) {
+                $("#result").html("$"+ data.query.results.quote.LastTradePriceOnly);
+                $("#result").hide().fadeIn(500);
+                $("#time").html(""+ data.query.results.quote.LastTradeTime);
+                $("#change").html(""+ data.query.results.quote.Change);
+                $("#percent").html(""+ data.query.results.quote.ChangeinPercent);
+            });
+        setTimeout(reLoad,6000);
+        };
+
+    });
+    
+</script>
+
+
+</body>
+</html>
